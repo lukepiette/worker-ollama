@@ -21,8 +21,12 @@ echo "Ollama server is ready"
 
 if [ -n "$OLLAMA_MODEL" ]; then
     echo "Pulling model: $OLLAMA_MODEL"
-    ollama pull "$OLLAMA_MODEL"
-    echo "Model pulled: $OLLAMA_MODEL"
+    if ollama pull "$OLLAMA_MODEL"; then
+        echo "Model pulled: $OLLAMA_MODEL"
+    else
+        echo "WARN: startup pull of $OLLAMA_MODEL failed — handler will retry on first request"
+    fi
 fi
 
+cd /
 exec python3 -u /handler.py

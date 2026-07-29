@@ -8,6 +8,7 @@ COPY requirements.txt /requirements.txt
 RUN PIP_BREAK_SYSTEM_PACKAGES=1 pip3 install --no-cache-dir -r /requirements.txt
 
 COPY handler.py /handler.py
+COPY test_input.json /test_input.json
 COPY start.sh /start.sh
 RUN chmod +x /start.sh
 
