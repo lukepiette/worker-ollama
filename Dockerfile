@@ -5,7 +5,7 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 COPY requirements.txt /requirements.txt
-RUN pip3 install --no-cache-dir --break-system-packages -r /requirements.txt
+RUN PIP_BREAK_SYSTEM_PACKAGES=1 pip3 install --no-cache-dir -r /requirements.txt
 
 COPY handler.py /handler.py
 COPY start.sh /start.sh
