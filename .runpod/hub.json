@@ -1,0 +1,33 @@
+{
+  "title": "Ollama",
+  "description": "Run any Ollama or HuggingFace GGUF model on serverless. Supports chat and completion requests, streaming, and automatic model caching on network volumes.",
+  "type": "serverless",
+  "category": "language",
+  "iconUrl": "https://ollama.com/public/ollama.png",
+  "config": {
+    "runsOn": "GPU",
+    "containerDiskInGb": 50,
+    "gpuIds": "ADA_24",
+    "gpuCount": 1,
+    "allowedCudaVersions": [
+      "12.7",
+      "12.6",
+      "12.5",
+      "12.4",
+      "12.3",
+      "12.2",
+      "12.1"
+    ],
+    "env": [
+      {
+        "key": "OLLAMA_MODEL",
+        "input": {
+          "name": "Model",
+          "type": "string",
+          "description": "Model to pull at startup. Any Ollama library model (e.g. 'llama3.2:3b') or HuggingFace GGUF repo with quant tag (e.g. 'hf.co/prism-ml/Bonsai-27B-gguf:Q1_0').",
+          "default": "llama3.2:3b"
+        }
+      }
+    ]
+  }
+}

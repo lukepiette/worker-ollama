@@ -1,0 +1,44 @@
+{
+  "tests": [
+    {
+      "name": "chat_completion",
+      "input": {
+        "model": "llama3.2:1b",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Reply with exactly one word: hello"
+          }
+        ]
+      },
+      "timeout": 300000
+    },
+    {
+      "name": "prompt_completion",
+      "input": {
+        "model": "llama3.2:1b",
+        "prompt": "Say hello in one word."
+      },
+      "timeout": 300000
+    }
+  ],
+  "config": {
+    "gpuTypeId": "NVIDIA GeForce RTX 4090",
+    "gpuCount": 1,
+    "env": [
+      {
+        "key": "OLLAMA_MODEL",
+        "value": "llama3.2:1b"
+      }
+    ],
+    "allowedCudaVersions": [
+      "12.7",
+      "12.6",
+      "12.5",
+      "12.4",
+      "12.3",
+      "12.2",
+      "12.1"
+    ]
+  }
+}
