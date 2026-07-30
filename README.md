@@ -1,5 +1,7 @@
 # Ollama Serverless Worker
 
+[![Runpod](https://api.runpod.io/badge/lukepiette/worker-ollama)](https://console.runpod.io/hub/lukepiette/worker-ollama)
+
 Run any [Ollama](https://ollama.com) model — including HuggingFace GGUF repos — on Runpod Serverless. Supports chat and completion requests, streaming, tool calling, and automatic model caching on network volumes.
 
 ## Quickstart

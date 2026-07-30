@@ -27,6 +27,111 @@
           "description": "Model to pull at startup. Any Ollama library model (e.g. 'llama3.2:3b') or HuggingFace GGUF repo with quant tag (e.g. 'hf.co/prism-ml/Bonsai-27B-gguf:Q1_0').",
           "default": "llama3.2:3b"
         }
+      },
+      {
+        "key": "OLLAMA_CONTEXT_LENGTH",
+        "input": {
+          "name": "Context Length",
+          "type": "number",
+          "description": "Context window size in tokens. Larger values use more VRAM.",
+          "default": 4096,
+          "advanced": true
+        }
+      },
+      {
+        "key": "OLLAMA_KV_CACHE_TYPE",
+        "input": {
+          "name": "KV Cache Type",
+          "type": "string",
+          "description": "Quantization type for the KV cache. q8_0 and q4_0 reduce VRAM usage at some quality cost. Requires Flash Attention.",
+          "default": "f16",
+          "options": [
+            { "label": "f16", "value": "f16" },
+            { "label": "q8_0", "value": "q8_0" },
+            { "label": "q4_0", "value": "q4_0" }
+          ],
+          "advanced": true
+        }
+      },
+      {
+        "key": "OLLAMA_FLASH_ATTENTION",
+        "input": {
+          "name": "Flash Attention",
+          "type": "boolean",
+          "description": "Enable flash attention. Reduces VRAM usage and is required for KV cache quantization.",
+          "default": true,
+          "advanced": true
+        }
+      },
+      {
+        "key": "OLLAMA_NUM_PARALLEL",
+        "input": {
+          "name": "Num Parallel",
+          "type": "number",
+          "description": "Number of requests processed in parallel per loaded model. Increases VRAM usage per parallel slot.",
+          "default": 1,
+          "advanced": true
+        }
+      },
+      {
+        "key": "OLLAMA_MAX_LOADED_MODELS",
+        "input": {
+          "name": "Max Loaded Models",
+          "type": "number",
+          "description": "Maximum number of models loaded into VRAM at the same time.",
+          "default": 1,
+          "advanced": true
+        }
+      },
+      {
+        "key": "OLLAMA_KEEP_ALIVE",
+        "input": {
+          "name": "Keep Alive",
+          "type": "string",
+          "description": "How long a model stays loaded after a request (e.g. '5m', '24h'). '-1' keeps it loaded for the lifetime of the worker (recommended for serverless).",
+          "default": "-1",
+          "advanced": true
+        }
+      },
+      {
+        "key": "OLLAMA_MAX_QUEUE",
+        "input": {
+          "name": "Max Queue",
+          "type": "number",
+          "description": "Maximum number of queued requests before Ollama rejects new ones.",
+          "default": 512,
+          "advanced": true
+        }
+      },
+      {
+        "key": "OLLAMA_LOAD_TIMEOUT",
+        "input": {
+          "name": "Load Timeout",
+          "type": "string",
+          "description": "Maximum time allowed for a model to load (e.g. '5m', '10m'). Increase for large models.",
+          "default": "5m",
+          "advanced": true
+        }
+      },
+      {
+        "key": "OLLAMA_SCHED_SPREAD",
+        "input": {
+          "name": "GPU Spread",
+          "type": "boolean",
+          "description": "Spread a model across all GPUs instead of loading it on a single GPU. Only relevant for multi-GPU workers.",
+          "default": false,
+          "advanced": true
+        }
+      },
+      {
+        "key": "OLLAMA_DEBUG",
+        "input": {
+          "name": "Debug Logging",
+          "type": "boolean",
+          "description": "Enable verbose Ollama server logs for troubleshooting.",
+          "default": false,
+          "advanced": true
+        }
       }
     ]
   }

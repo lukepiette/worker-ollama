@@ -20,6 +20,32 @@
         "prompt": "Say hello in one word."
       },
       "timeout": 300000
+    },
+    {
+      "name": "streaming_chat",
+      "input": {
+        "model": "llama3.2:1b",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Count from 1 to 5."
+          }
+        ],
+        "stream": true
+      },
+      "timeout": 300000
+    },
+    {
+      "name": "options_passthrough",
+      "input": {
+        "model": "llama3.2:1b",
+        "prompt": "Write a long story about a dragon.",
+        "options": {
+          "num_predict": 10,
+          "temperature": 0
+        }
+      },
+      "timeout": 300000
     }
   ],
   "config": {
@@ -29,6 +55,26 @@
       {
         "key": "OLLAMA_MODEL",
         "value": "llama3.2:1b"
+      },
+      {
+        "key": "OLLAMA_FLASH_ATTENTION",
+        "value": "1"
+      },
+      {
+        "key": "OLLAMA_KV_CACHE_TYPE",
+        "value": "q8_0"
+      },
+      {
+        "key": "OLLAMA_CONTEXT_LENGTH",
+        "value": "4096"
+      },
+      {
+        "key": "OLLAMA_NUM_PARALLEL",
+        "value": "1"
+      },
+      {
+        "key": "OLLAMA_KEEP_ALIVE",
+        "value": "-1"
       }
     ],
     "allowedCudaVersions": [
