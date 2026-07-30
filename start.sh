@@ -29,4 +29,4 @@ if [ -n "$OLLAMA_MODEL" ]; then
 fi
 
 cd /
-exec python3 -u /handler.py
+exec python3.11 -u /handler.py
